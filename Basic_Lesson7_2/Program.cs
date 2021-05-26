@@ -46,11 +46,11 @@ namespace basic_lesson7_2
         {
             for (int i = 0; i < trains.Length; i++)
             {
-                Console.WriteLine("Введите Пункт назначения");
+                Console.WriteLine("Input destiantion");
                 string destination = Console.ReadLine();
-                Console.WriteLine("Введите номер поезда");
+                Console.WriteLine("Input train number ");
                 int number = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Введите время отправки");
+                Console.WriteLine("input time of despatch");
                 string d = Console.ReadLine();
                 DateTime despatch = string.IsNullOrEmpty(d) ? DateTime.Now.AddHours(1) : DateTime.Parse(d);
                 trains[i] = new Train(destination, number, despatch);
