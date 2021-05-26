@@ -55,8 +55,36 @@ namespace basic_lesson7_2
                 DateTime despatch = string.IsNullOrEmpty(d) ? DateTime.Now.AddHours(1) : DateTime.Parse(d);
                 trains[i] = new Train(destination, number, despatch);
             }
-
+            Sort(trains);
         }
+
+        public static void Search(Train[] trains, int number)
+        {
+            bool status = false;
+            for(int i = 0; i< trains.Length; i++)
+            {
+                if (trains[i].Number == number)
+                {
+                    status = true;
+                    Console.WriteLine($"Train №{trains[i].Number} is found. \nDestiantion: {trains[i].Destination}. \nTime of despatch {trains[i].Despatch}");
+                }
+                
+            }
+            if (!status)
+            {
+                Console.WriteLine("Train №{0} not found", number);
+            }
+        }
+        public static void Show(Train[] trains)
+        {
+            Console.WriteLine(new string('-', 30));
+            for (int i = 0; i < trains.Length; i++)
+            {
+                Console.WriteLine($"Train №{trains[i].Number}. \nDestiantion: {trains[i].Destination}. \nTime of despatch {trains[i].Despatch}\n");
+                Console.WriteLine(new string('-', 30));
+            }
+        }
+
 
     }
     class Program
@@ -64,8 +92,15 @@ namespace basic_lesson7_2
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var newTrains = new Train[2];
+            var newTrains = new Train[8];
             TrainClass.AddTrainArray(newTrains);
+            Console.WriteLine("Find train by number");
+            int number = Int32.Parse(Console.ReadLine());
+            TrainClass.Search(newTrains, number);
+            Console.WriteLine("\nAll train in array newTrains");
+            TrainClass.Show(newTrains);
+
+
         }
     }
 }
