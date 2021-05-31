@@ -55,6 +55,15 @@ namespace basic_lesson10_3
                     }
                 return "Нет";
             }
+            set
+            {
+                for (int i = 0; i < Lenght; i++)
+                    if ($"{index}" == $"{key[i]}")
+                    {
+                        TValue obj = (TValue)Convert.ChangeType(value, typeof(TValue));
+                        Add(obj, i);
+                    }
+            }
         }
         private void Add(TValue k, int i)
         {
