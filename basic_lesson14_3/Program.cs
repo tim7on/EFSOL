@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 /*Задание 3 
 Используя Visual Studio, создайте проект по шаблону Console Application. 
@@ -11,17 +12,16 @@ using System.Linq;
 элементов коллекции в цикле foreach.*/
 namespace basic_lesson14_3
 {
-    class MyDictionary<TKey, TValue> :IEnumerator
+    class MyDictionary<TKey, TValue> : IEnumerable<object>, IEnumerator<object>
     {
 
         private readonly TKey[] key;
         private readonly TValue[] value;
         private readonly int lenght;
         int position = -1;
-        public IEnumerator GetEnumerator()
-        {
-            return value.GetEnumerator();
-        }
+
+
+        
         public bool MoveNext()
         {
             if (position < key.Length - 1)
@@ -42,7 +42,7 @@ namespace basic_lesson14_3
 
         public object Current
         {
-            get { return key[position]; }
+            get { return key[position] + " " + value[position]; }
         }
         public int Lenght
         {
@@ -57,7 +57,6 @@ namespace basic_lesson14_3
             value = new TValue[i];
             lenght = i;
         }
-
         public string this[int index]
         {
             get
@@ -72,7 +71,20 @@ namespace basic_lesson14_3
             key[i] = k;
             value[i] = v;
         }
-        
+        public IEnumerator<object> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
+        }
+
+        public void Dispose()
+        {
+            Reset();
+        }
     }
     class Program
     {
@@ -87,25 +99,25 @@ namespace basic_lesson14_3
         {
             Console.WriteLine("Input lenght of Dictionary:");
             int n = int.Parse(Console.ReadLine());
-            var dictionary = new MyDictionary<string, string>(n);
+            var dictionaries = new MyDictionary<string, string>(n);
             for (int i = 0; i < n; i++)
             {
-                dictionary.Add(i, RandomString(4), RandomString(5));
-                Console.Write($"Element #{i} is {dictionary[i]}\n");
+                dictionaries.Add(i, RandomString(4), RandomString(5));
+                Console.Write($"Element #{i} is {dictionaries[i]}\n");
             }
             Console.WriteLine(new string('*', 25));
-            Console.WriteLine("Elements in dictionary: {0}", dictionary.Lenght);
+            Console.WriteLine("Elements in dictionary: {0}", dictionaries.Lenght);
             Console.WriteLine(new string('*', 25));
             Console.WriteLine("input ID of element to show");
             Console.WriteLine(new string('-', 25));
             int k = int.Parse(Console.ReadLine());
-            if (k <= dictionary.Lenght)
+            if (k <= dictionaries.Lenght)
             {
                 Console.WriteLine(new string('*', 25));
-                Console.WriteLine($"Element #{k} is {dictionary[k]}");
+                Console.WriteLine($"Element #{k} is {dictionaries[k]}");
                 Console.WriteLine(new string('*', 25));
             }
-            foreach (var dict in dictionary)
+            foreach (var dict in dictionaries)
             {
                 Console.WriteLine(dict);
             }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 /*Задание 3 
@@ -26,6 +25,7 @@ namespace basic_lesson10_3
                 return lenght;
             }
         }
+
         public MyDictionary(int i)
         {
             key = new TKey[i];
@@ -41,6 +41,24 @@ namespace basic_lesson10_3
                     return key[index] + " - " + value[index]; 
                 return "Попытка обращения за пределы массива.";
             }
+        }
+        public string this[TKey index]
+        {
+
+            get
+            {
+                for (int i = 0; i < Lenght; i++)
+                    if ($"{index}" == $"{key[i]}")
+                    {
+                        string obj = key[i] + " - " + value[i];
+                        return obj;
+                    }
+                return "Нет";
+            }
+        }
+        private void Add(TValue k, int i)
+        {
+            value[i] = k;
         }
         public void Add(int i, TKey k, TValue v)
         {
@@ -74,8 +92,8 @@ namespace basic_lesson10_3
             Console.WriteLine(new string('*', 25));
             Console.WriteLine("input ID of element to show");
             Console.WriteLine(new string('-', 25));
-            int k = int.Parse(Console.ReadLine());
-            if (k<= dictionary.Lenght)
+            string k = Console.ReadLine();
+            /*if (k<= dictionary.Lenght)*/
             {
                 Console.WriteLine(new string('*', 25));
                 Console.WriteLine($"Element #{k} is {dictionary[k]}");
