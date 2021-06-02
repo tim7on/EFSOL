@@ -105,9 +105,11 @@ namespace basic_lesson14_3
                 dictionaries.Add(i, RandomString(4), RandomString(5));
                 Console.Write($"Element #{i} is {dictionaries[i]}\n");
             }
+
             Console.WriteLine(new string('*', 25));
             Console.WriteLine("Elements in dictionary: {0}", dictionaries.Lenght);
             Console.WriteLine(new string('*', 25));
+
             Console.WriteLine("input ID of element to show");
             Console.WriteLine(new string('-', 25));
             int k = int.Parse(Console.ReadLine());
@@ -117,6 +119,7 @@ namespace basic_lesson14_3
                 Console.WriteLine($"Element #{k} is {dictionaries[k]}");
                 Console.WriteLine(new string('*', 25));
             }
+
             foreach (var dict in dictionaries)
             {
                 Console.WriteLine(dict);
