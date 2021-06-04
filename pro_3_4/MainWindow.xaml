@@ -1,0 +1,16 @@
+﻿<Window x:Class="pro_3_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pro_3_4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <xctk:ColorPicker Name="ClrPcker_Background" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" HorizontalAlignment="Left" Margin="728,385,0,0" VerticalAlignment="Top" RenderTransformOrigin="-21.333,-9.157"></xctk:ColorPicker>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="728,385,0,0" VerticalAlignment="Top"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="353,152,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
