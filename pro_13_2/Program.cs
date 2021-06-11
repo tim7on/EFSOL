@@ -15,9 +15,8 @@ namespace pro_13_2
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            InvokeDelegate test = Method;
             Action myDelegate = new Action(Method);
-            myDelegate.BeginInvoke(test, null);
+            myDelegate.BeginInvoke(null, null);
         }
     }
 }
